@@ -11,37 +11,6 @@ function timeConverter(UNIX_timestamp){
 
 module.exports = {
 
-// fonctions principales
-	insert: (params) => {
-		let password = bcrypt.hashSync(params.pwd);
-		var date = timeConverter(Date.now());
-		return db.run('INSERT INTO users (pseudo, pwd, email, firstname, lastname, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)',
-			params.pseudo,
-			password,
-			params.email,
-			params.firstname,
-			params.lastname,
-			date,
-			date)
-	},
-
-	update: (body, params, samePwd) => {
-		if (samePwd) var pwd = body.pwd
-		else var pwd = bcrypt.hashSync(body.pwd)
-		return db.all('UPDATE users SET pseudo = ?, pwd = ?, email = ?, firstname = ?, lastname = ?, updatedAt = ? WHERE rowid = ?',
-			body.pseudo,
-			pwd,
-			body.email,
-			body.firstname,
-			body.lastname,
-			timeConverter(Date.now()),
-			params.userId)
-	},
-
-	delete: (userId) => {
-		return db.all('DELETE FROM users WHERE rowid = ?',
-			userId)
-	},
 
 // getters
 	getId: (accessToken) => {

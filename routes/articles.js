@@ -42,8 +42,6 @@ router.get('/', (req, res, next) => {
 	})
 })
 
-
-
 // Add article
 router.get('/add', (req, res, next) => {
 	var token = Session.getToken(req)
@@ -97,7 +95,7 @@ router.get('/:articlesId', (req, res) => {
 				res.format({
 					html: () => {
 						res.render('articles/show', {
-							title: 'Articles '+req.params.articlesId,
+							title: 'Articles : '+req.params.articlesId,
 							articles: articles,
 							suppr: '/articles/'+req.params.articlesId+'?_method=DELETE',
 							modif: '/articles/'+req.params.articlesId+'/edit',
@@ -135,9 +133,11 @@ router.get('/:articlesId/edit', (req, res) => {
 	})
 })
 
-// Update User
+// Update Article
 router.put('/:articlesId', (req, res) => {
-				Article.updateArticle(req.params.articlesId, req.body.titre, req.body.corps).then((result) => {
+				var titre = req.body.titre
+				var corps = req.body.corps
+				Article.updateArticle(req.params.articlesId, titre, corps).then((result) => {
 					res.format({
 						html: () => {
 							res.redirect('/articles')

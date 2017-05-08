@@ -60,7 +60,7 @@ router.post('/', (req, res, next) => {
 				})
 			},
 			json: () => {
-				res.redirect({message: 'Error !'})
+				res.redirect({message: 'Error'})
 			}
 		})
 	}
@@ -70,7 +70,7 @@ router.post('/', (req, res, next) => {
 				res.format({
 					html: () => {
 						res.render('connexion/connexion', {
-							title: 'Connexion Page',
+							title: 'Page de connexion',
 							badConn: true
 						})
 					},
@@ -79,8 +79,8 @@ router.post('/', (req, res, next) => {
 					}
 				})
 			}
-			var comparepwd = bcrypt.compareSync(req.body.pwd, user[0]['pwd'])
-			if (comparepwd) {
+			var verif = bcrypt.compareSync(req.body.pwd, user[0]['pwd'])
+			if (verif) {
 				require('crypto').randomBytes(48, function(err, buffer) {
   					var token = buffer.toString('hex')
   					Session.add(user[0]['rowid'], token).then((result) => {
@@ -128,7 +128,6 @@ router.delete('/', (req, res, next) => {
 			res.end()
 		}
 	})
-
 })
 
 router.all('*', (req, res) => {

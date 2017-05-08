@@ -61,7 +61,19 @@ module.exports = {
 		return findArticles.exec()
 	},
 
-// Redis vus
+  count: () => {
+    var findArticles = articlesModel.find(null)
+		var count = findArticles.count
+    return count
+	},
+
+	listWithPagination: (limitToShow, params) => {
+		return db.all('SELECT *, rowid FROM users LIMIT ? OFFSET ?',
+			params.limit || limitToShow,
+			params.offset || 0)
+	},
+
+// test
   AddCompteur: (articlesId) =>{
     return compteur.hget('Article:'+ articlesId, 'Vus').then((test) => {
 		    var nbrVus = parseInt(test);
@@ -69,10 +81,5 @@ module.exports = {
 			  return compteur.hmset('Article:'+ articlesId, 'Vus', nbrVus)
 		})
 	},
-
-	findCompteur: (articlesId) => {
-		return compteur.hget('Article:'+ articlesId, 'Vus')
-	}
-
 
 }
