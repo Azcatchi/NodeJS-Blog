@@ -29,14 +29,5 @@ module.exports = {
 			pseudo)
 	},
 
-	count: () => {
-		return db.all('SELECT COUNT(*) as nbrUsers FROM users')
-	},
-
-	listWithPagination: (limitToShow, params) => {
-		return db.all('SELECT *, rowid FROM users LIMIT ? OFFSET ?',
-			params.limit || limitToShow,
-			params.offset || 0)
-	}
 
 }
