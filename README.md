@@ -1,14 +1,10 @@
-#Projet NodeJs Lucas Pozzer et Adrien Cluzel
+#Projet NodeJs blog Lucas Pozzer et Adrien Cluzel
 
 Bonjour voici notre node js
 
-## Les utilisateurs déjà créés
+## L'utilisateur
 
     admin
-    mdp : admin
+    mdp : Passw0rd
     
-    adrien
-    mdp : adrien
 
-    lucas
-    mdp : lucas
