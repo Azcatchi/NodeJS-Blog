@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+	h1= title
+	- warning = warning
+	if warning
+		p Veuillez remplir le champs message
+	form(method="post", action= action)
+		div
+			label(for="titre") Titre :
+			div
+				input(type="text", name="titre")
+
+		div
+			label(for="corps") Corps :
+			div
+				textarea(type="text", name="corps")
+
+
+		div
+			div
+				p
+				input(type="submit", value="Enregistrer")

@@ -1,0 +1,26 @@
+html
+	head
+		title= title
+
+	block content
+
+	br
+	br
+
+	body
+			br
+			br
+
+			- listData = list
+			if affichage
+				if hasArticles
+					h1= "Mon blog"
+					form(method="post", action="/articles")
+						ul
+							each list in listData
+								div
+									h2= " "+list.titre
+									p= list.corps
+									p= " (par "+list.auteur+")"
+				else
+					p Aucun articles

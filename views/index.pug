@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p Bienvenue sur la partie admin de #{title}
+
+  br
+  br
+  a(href="/") Accueil
+  br
+  br
+  a(href="/users/me") Mon profil
+  br
+  br
+  a(href="/articles") Tous les articles
+  br
+  br
+  a(href="/articles/add") Ajouter article
+  br
+  br
+  form( method="post", action= "/sessions?_method=DELETE")
+    input(type="submit", value="Deconnexion")

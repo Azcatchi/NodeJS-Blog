@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+	h1 Connexion Admin
+	- warning = warning
+	if warning
+		p Veuillez remplir tous les champs
+	- badConn = badConn
+	if badConn
+		p Mauvais User/password
+
+
+	form(method="post", action="/sessions")
+		div
+				label(for="pseudo") Pseudo :
+				div
+					input(type="text", name="pseudo")
+		br
+		div
+				label(for="pwd") Mot de passe :
+				div
+					input(type="password", name="pwd")
+		br
+		div
+			div
+				p
+				input(type="submit", value="Connexion")
+
+	br
+	br

@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+	h1= title
+
+	- listData = list
+	if hasArticles
+		form(method="post", action="/articles")
+			ul
+				each list in listData
+					li
+						span= " "+list.titre
+							span.text-primary= " (par "+list.auteur+")"
+							a(href="/articles/"+list.articlesId)
+								buttons(type="button") voir
+	else
+		p Aucun articles

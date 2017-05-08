@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+	h1 Utilisateur
+	- user = user
+	table
+		tr
+			th ID
+			td= user[0]['rowid']
+		tr
+			th Pseudo
+			td= user[0]['pseudo']
+		tr
+			th Firstname
+			td= user[0]['firstname']
+		tr
+			th Lastname
+			td= user[0]['lastname']
+		tr
+			th Email
+			td= user[0]['email']
+
+
+	a(href="/") retour
